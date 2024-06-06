@@ -95,6 +95,11 @@ symfony serve
 4. **Pregunta de Código:**
    - Escribe un servicio en Symfony que se inyecta en un controlador y realiza una operación matemática básica (por ejemplo, sumar dos números). ¿Qué configuraciones son necesarias para poder usarlo? (opcional) Implementa también una prueba unitaria para verificar el correcto funcionamiento del servicio.
 
+   **configuraciones necesarias para utilizar un servicio**
+   1. Autoconfiguración y Autodetección de Servicios: Verifica que config/services.yaml esté correctamente configurado para autoconfigurar y detectar servicios automáticamente.
+   2. Definición del Servicio (Opcional): Definir el servicio manualmente en config/services.yaml por si falla la autodetección.
+   3. Inyección en el Controlador: Asegúrate de que el servicio se inyecta correctamente en el controlador.
+
 5. **Pregunta de Código:**
    - Muestra cómo crear un formulario en Symfony para una entidad User con campos username y email.
 
