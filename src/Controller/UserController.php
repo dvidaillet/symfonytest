@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     #[Route('/user', name: 'app_user')]
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(Request $request): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -21,15 +21,15 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($user);
-            $entityManager->flush();
+            // Handle form submission, e.g., save to database
 
-            return $this->redirectToRoute('user_success');
+            return $this->redirectToRoute('user'); // Adjust this to your needs
         }
+
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
+            'form' => $form->createView(),
         ]);
-        
     }
 
     #[Route('/user/success', name: 'user_success')]
