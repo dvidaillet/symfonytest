@@ -115,7 +115,16 @@ symfony serve
 
 7. **Pregunta de Código:**
    - Escribe una consulta Doctrine en Symfony para obtener todos los registros de una entidad Product donde el precio sea mayor a 100.
-
+   ```javascript
+         public function findProductsWithPriceGreaterThan100()
+      {
+         return $this->createQueryBuilder('p')
+               ->andWhere('p.price > :price')
+               ->setParameter('price', 100)
+               ->getQuery()
+               ->getResult();
+      }
+   ```
 8. **Pregunta Teórica:**
    - ¿Qué es el Event Dispatcher en Symfony y para qué se utiliza?
    
