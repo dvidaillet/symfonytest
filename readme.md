@@ -1,7 +1,7 @@
 # Symfony 7 Project
 
 ## Descripción
-Este es un proyecto basado en Symfony 7. A continuación, se detallan los pasos necesarios para clonar el repositorio y configurar el entorno de desarrollo.
+Este es un proyecto basado en Symfony 7 a continuación se detallan los pasos necesarios para clonar el repositorio y configurar el entorno de desarrollo.
 
 ## Requisitos Previos
 - PHP >= 8.1
@@ -11,61 +11,57 @@ Este es un proyecto basado en Symfony 7. A continuación, se detallan los pasos 
 
 ## Clonar el Repositorio
 Para clonar el repositorio, abre una terminal y ejecuta el siguiente comando:
-
 ```bash
-git clone https://github.com/dvidaillet/Server-rest
+git clone https://github.com/dvidaillet/symfonytest
+```
+## Instalar dependencias
+ Después de Clonar el Repositorio navegar al directorio del proyecto, por ejemplo:
+```bash
+cd C:\Users\dvida\Desktop\symphony\test\test
 ```
 
- Después de Clonar el Repositorio navegar al directorio del proyecto
-
-```bash
-cd .../Server-rest
-```
-Instala las dependencias del proyecto utilizando Compose
-
+Instala las dependencias del proyecto utilizando Compose:
 ```bash
 composer install
 ```
-luego ejecutar el comomando
 
+luego ejecutar el comando:
 ```bash
 symfony serve         
 ```
 
-
 # Test de Conocimientos Generales para Desarrollador Fullstack Junior
-
 
 ## Sección 1: Symfony
 
 1. **Pregunta de Configuración:**
    - Describe los pasos básicos para levantar un proyecto en Symfony.
-     1. Se debe tener instalado un servidor de aplicaciones web como WAMP o XAMPP con una versión de PHP y luego instalar Composer y luego Scoop.
+     1. Se debe tener instalado un servidor de aplicaciones web como `WAMP` o `XAMPP` con una versión de PHP y luego instalar Composer y luego Scoop.
      2. Instalar Symfony CLI.
      3. Crear un nuevo proyecto utilizando Symfony CLI con el comando: 
-        ```
+        ```bash
         symfony new --webapp my_project
         ```
         o 
-        ```
+        ```bash
         symfony new my_project
         ```
-        dependiendo de si es una web o una API.
+        dependiendo de si el proyecto es una web o una API.
      4. Instalar dependencias en el directorio del nuevo proyecto:
-        ```
+        ```bash
         cd my_project
         composer install
         ```
      5. Configurar el servidor web de Symfony CLI (Esto levantará el servidor en http://localhost:8000): 
+        ```bash
+        symfony server
         ```
-        symfony server:start
-        ```
-     6. Configurar la base de datos en el archivo .env:
-        ```
+     6. En caso de que el proyecto utilice una base de datos se debe Configurar en el archivo .env y ejecutar el siguiente comandos:
+        ```bash
         DATABASE_URL="mysql://user:password@127.0.0.1:3306/my_database"
         ```
      7. Ejecutar los siguientes comandos para crear la base de datos:
-        ```
+        ```bash
         php bin/console doctrine:database:create
         php bin/console doctrine:migrations:migrate
         ```
@@ -76,25 +72,25 @@ symfony serve
 3. **Pregunta Teórica:**
    - Explica la arquitectura de Symfony y cómo se organiza un proyecto típico en términos de carpetas y archivos.
    
-      Symfony sigue una estructura de proyecto bien definida y organizada que se basa en el estándar de diseño Modelo-Vista-Controlador (MVC), junto con otros patrones de diseño modernos. Aquí tienes una explicación de la arquitectura típica de un proyecto Symfony y cómo se organizan las carpetas y archivos:
+      Symfony sigue una estructura de proyecto bien definida y organizada que se basa en el estándar de diseño Modelo-Vista-Controlador (MVC), junto con otros patrones de diseño modernos. Aquí se muestra una explicación de la arquitectura típica de un proyecto Symfony y cómo se organizan las carpetas y archivos:
       - Directorio `bin/`: Contiene los scripts ejecutables de Symfony, como `console`, que se utiliza para ejecutar comandos de Symfony desde la línea de comandos.
       - Directorio `config/`: Contiene la configuración de la aplicación, como las rutas (`routes.yaml`), la configuración del entorno (`packages/`), la configuración de servicios (`services.yaml`), etc.
-      - Directorio `public/`: Es el directorio raíz de tu aplicación web y contiene todos los archivos accesibles públicamente, como el punto de entrada (`index.php`), los archivos CSS, JavaScript, imágenes, etc.
-      - Directorio `src/`: Es donde reside la mayor parte del código fuente de tu aplicación. Contiene:
-         - Directorio `Controller/`: Aquí se encuentran los controladores de Symfony, que manejan las solicitudes HTTP y devuelven respuestas.
-         - Directorio `Entity/`: Aquí se definen las entidades de Doctrine, si estás utilizando el ORM de Doctrine.
-         - Directorio `Form/`: Contiene clases de formulario si estás utilizando el componente de formularios de Symfony.
-         - Directorio `Repository/`: Si estás utilizando Doctrine, aquí se encuentran los repositorios de tus entidades.
-         - Directorio `Service/`: Contiene clases de servicio, que encapsulan la lógica de negocio de tu aplicación.
-         - Directorio `EventListener/`: Aquí puedes definir event listeners y event subscribers para manejar eventos en tu aplicación.
-         - Directorio `Security/`: Contiene clases relacionadas con la seguridad, como autenticadores, voters, etc.
-         - Directorio `TwigExtension/`: Si necesitas crear extensiones personalizadas de Twig, puedes colocarlas aquí.
+      - Directorio `public/`: Es el directorio raíz de la aplicación y contiene todos los archivos accesibles públicamente, como el punto de entrada (`index.php`), los archivos CSS, JavaScript, imágenes, etc.
+      - Directorio `src/`: Es donde reside la mayor parte del código fuente de la aplicación. Casi siempre esta conformado por los siguientes directorios:
+         - `Controller/`: Aquí se encuentran los controladores de Symfony, que manejan las solicitudes HTTP y devuelven respuestas.
+         - `Entity/`: Aquí se definen las entidades de Doctrine, si se está utilizando el ORM de Doctrine.
+         - `Form/`: Contiene clases de formulario si se está utilizando el componente de formularios de Symfony.
+         - `Repository/`: Si se está utilizando Doctrine, aquí se coclocan los repositorios de las entidades.
+         - `Service/`: Contiene clases de servicio, que encapsulan la lógica de negocio de la aplicación.
+         - `EventListener/`: Aquí se definen event listeners y event subscribers para manejar eventos en la aplicación.
+         - `Security/`: Contiene clases relacionadas con la seguridad, como autenticadores, voters, etc.
+         - `TwigExtension/`: Si necesitas crear extensiones personalizadas de Twig, se colocan aquí.
          - Se pueden crear directorios propios y archivos para organizar el código según sea necesario.
-      - Directorio `templates/`: Aquí se encuentran las plantillas Twig que se utilizan para generar las vistas de tu aplicación. Se organizan en subdirectorios según sea necesario para mantener la estructura de las vistas.
-      - Directorio `tests/`: Contiene las pruebas unitarias y funcionales de tu aplicación. Puedes organizar tus pruebas en subdirectorios según el tipo de prueba o el componente que estés probando.
-      - Directorio `translations/`: Si estás internacionalizando tu aplicación, aquí puedes colocar los archivos de traducción para diferentes idiomas.
+      - Directorio `templates/`: Aquí se encuentran las plantillas Twig que se utilizan para generar las vistas de la aplicación. Se organizan en subdirectorios según sea necesario para mantener la estructura de las vistas.
+      - Directorio `tests/`: Contiene las pruebas unitarias y funcionales de la aplicación. Estas se pueden organizar en subdirectorios según el tipo de prueba o el componente que se esté probando.
+      - Directorio `translations/`: Aquí se colocan los archivos de traducción para diferentes idiomas.
       - Directorio `var/`: Contiene datos variables generados por Symfony, como la caché, los logs, los archivos de sesión, etc.
-      - Directorio `vendor/`: Aquí se encuentran todas las dependencias de tu proyecto instaladas a través de Composer.
+      - Directorio `vendor/`: Aquí se encuentran todas las dependencias del proyecto instaladas a través de Composer.
 
 4. **Pregunta de Código:**
    - Escribe un servicio en Symfony que se inyecta en un controlador y realiza una operación matemática básica (por ejemplo, sumar dos números). ¿Qué configuraciones son necesarias para poder usarlo? (opcional) Implementa también una prueba unitaria para verificar el correcto funcionamiento del servicio.
@@ -118,7 +114,7 @@ symfony serve
 8. **Pregunta Teórica:**
    - ¿Qué es el Event Dispatcher en Symfony y para qué se utiliza?
    
-      El Event Dispatcher en Symfony es un componente clave que permite la gestión y ejecución de eventos y listeners (o "escuchadores") dentro de una aplicación Symfony. Este componente implementa el patrón de diseño Observador, el Event Dispatcher se utiliza para desacoplar la lógica de la aplicación y permitir que diferentes partes de la misma se comuniquen de manera flexible a través de eventos.
+      El Event Dispatcher es un componente clave que permite la gestión y ejecución de eventos y listeners (o "escuchadores") dentro de una aplicación Symfony. Este componente implementa el patrón de diseño Observador, el Event Dispatcher se utiliza para desacoplar la lógica de la aplicación y permitir que diferentes partes de la misma se comuniquen de manera flexible a través de eventos.
 
 9. **Pregunta de Código:**
    - Crea un validador personalizado en Symfony para asegurar que el campo email de una entidad User no pertenece a un dominio específico (por ejemplo, "example.com"). Muestra cómo configurar este validador y cómo sería utilizado en la entidad User.
@@ -161,7 +157,7 @@ symfony serve
    - ¿Qué es el DOM y cómo se manipula usando JavaScript?
    
      El DOM (Document Object Model) es una representación estructurada del contenido de un documento web, como HTML o XML. Actúa como un puente entre el contenido y el lenguaje de programación, en este caso, JavaScript. El DOM representa el documento como un árbol de nodos, donde cada nodo representa una parte del documento (por ejemplo, un elemento, un atributo, un texto, etc.)
-     Se puede acceder a elementos del DOM usando métodos como getElementById, getElementsByClassName, getElementsByTagName, o más modernamente, querySelector y querySelectorAll.
+     Se puede acceder a elementos del DOM usando métodos como getElementById, getElementsByClassName, getElementsByTagName, la tendencia es a utilizar querySelector y querySelectorAll.
 
 6. **Pregunta de Código:**
    - Escribe un código en JavaScript que añada un event listener a un botón con el id #myButton para mostrar una alerta con el mensaje "Hello World" al hacer clic.
@@ -253,7 +249,7 @@ symfony serve
    - ¿Cuál es el comando para clonar un repositorio de Git?
      El comando es `git clone` seguido de la URL del repositorio que deseas clonar.
      ```bash
-     git clone https://github.com/usuario/repositorio.git
+     git clone https://github.com/dvidaillet/symfonytest
      ```
 
 3. **Pregunta Teórica:**
@@ -262,8 +258,12 @@ symfony serve
 
 4. **Pregunta de Comandos:**
    - Proporciona los comandos necesarios para crear una nueva rama llamada `feature-xyz`, cambiar a esa rama, y luego fusionarla con la rama `main`.
+   Para crear la rama `feature-xyz` y posicionarce en ella se puede utilizar:
      ```bash
      git checkout -b feature-xyz
+     ```
+   Luego de realizar lo cambios y comprobar que funcionen correctamente, para fusionarla con la rama `main` se utilizan los comandos:
+     ```bash
      git checkout main
      git merge feature-xyz
      ```
@@ -271,10 +271,10 @@ symfony serve
 5. **Pregunta Teórica:**
    - ¿Qué es un "merge conflict" y cómo se resuelve?
      Un "merge conflict" ocurre cuando Git no puede automáticamente fusionar los cambios de dos ramas porque estos cambios entran en conflicto. Esto sucede cuando dos ramas han modificado las mismas líneas de código de diferentes maneras, o cuando una rama ha borrado un archivo que la otra rama ha modificado.
-     Para solucionar un conflicto Git detiene el proceso de fusión y te notifica qué archivos tienen conflictos, se abre cada archivo con conflictos en tu editor de texto. Git te mostrará las secciones conflictivas del archivo entre `<<<<<<<`, `=======`, y `>>>>>>>`, indicando las diferencias entre las versiones en conflicto, se edita el archivo para resolver el conflicto manualmente. Decide qué cambios quieres mantener, eliminar o modificar en cada sección conflictiva.
-     Después de resolver el conflicto, agrega los archivos modificados al área de staging utilizando `git add` y finalmente, haz el commit de fusión para completar el proceso de fusión:
+     Para solucionar un conflicto Git detiene el proceso de fusión y notifica qué archivos tienen conflictos, se abre cada archivo con conflictos en el editor de texto. Git mmuestra con conflictos del archivo encerrando la porcion del código entre `<<<<<<<`, `=======`, y `>>>>>>>`, indicando las diferencias entre las versiones en conflicto, se edita el archivo para resolver el conflicto manualmente. Decide qué cambios quieres mantener, eliminar o modificar en cada sección conflictiva.
+     Después de resolver el conflicto, agrega los archivos modificados al área de staging utilizando `git add` y finalmente, realizar un commit para completar el proceso de fusión:
      ```bash
-     git commit -m "Resolver conflicto de fusión"
+     git commit -m "Resolver conflictos"
      ```
 
 6. **Pregunta de Comandos:**
@@ -329,19 +329,11 @@ symfony serve
 
 2. **Pregunta Teórica:**
    - Explica la diferencia entre una clave primaria (Primary Key) y una clave foránea (Foreign Key) en MySQL. ¿Cuándo y por qué se utilizan?
-     Una clave primaria es un campo o conjunto de campos en una tabla que identifica de manera única cada fila en esa tabla, debe contener valores únicos para cada fila y no puede contener valores nulos (NULL). Una clave foránea es un campo en una tabla que establece una relación con la clave primaria de otra tabla. Esta relación puede ser de uno a uno, uno a muchos o muchos a muchos.
+     Una clave primaria es un campo o conjunto de campos en una tabla que identifica de manera única cada fila en esa tabla, debe contener valores únicos para cada fila y no puede contener valores nulos (NULL). Una clave foránea es un campo en una tabla que establece una relación con la clave primaria de otra tabla. Esta relación puede ser de uno a uno, uno a muchos o muchos a muchos. 
 
-     **Cuándo y Por Qué Se Utilizan:**
+     1.`Clave Primaria`: Se utiliza para identificar de forma única cada registro en una tabla para prevenir la inserción de registros duplicados, estas mejoran el rendimiento al permitir un acceso rápido a registros específicos mediante búsquedas por clave primaria.
 
-     **Clave Primaria:**
-     - Se utiliza para identificar de forma única cada registro en una tabla.
-     - Garantiza la integridad de los datos al prevenir la inserción de registros duplicados.
-     - Mejora el rendimiento al permitir un acceso rápido a registros específicos mediante búsquedas por clave primaria.
-
-     **Clave Foránea:**
-     - Se utiliza para establecer relaciones entre las filas de diferentes tablas.
-     - Mantiene la integridad referencial entre tablas, asegurando que los datos sean consistentes y evitando la eliminación o modificación de datos que dejarían registros huérfanos.
-     - Facilita consultas complejas y operaciones de JOIN que involucran múltiples tablas relacionadas.
+     2.`Clave Foránea`: Se utiliza para establecer relaciones entre las filas de diferentes tablas mantienen la integridad referencial entre tablas, asegurando que los datos sean consistentes y evitando la eliminación o modificación de datos que dejarían registros huérfanos y facilita consultas complejas y operaciones de JOIN que involucran múltiples tablas relacionadas.
 
 3. **Pregunta de Código:**
    - Escribe una consulta SQL para insertar tres registros en la tabla `employees` creada en la pregunta 1.
@@ -374,7 +366,7 @@ symfony serve
      En MySQL, una transacción es un conjunto de operaciones que se ejecutan como una única unidad de trabajo. Estas operaciones pueden incluir inserciones, actualizaciones, eliminaciones, etc. El concepto clave de una transacción es que todas las operaciones deben completarse con éxito para que los cambios sean permanentes en la base de datos. Si alguna de las operaciones falla, la transacción se revierte, asegurando que la base de datos permanezca en un estado coherente.
 
      **Ejemplo de Uso:**
-     Supongamos que tienes una tabla llamada `cuentas` que almacena información sobre cuentas bancarias. Quieres transferir una cantidad específica de dinero de una cuenta a otra dentro de una transacción para garantizar que la transferencia sea exitosa y consistente. Aquí está cómo podrías hacerlo en MySQL:
+     Supongamos que tienes una tabla llamada `cuentas` que almacena información sobre cuentas bancarias. Quieres transferir una cantidad específica de dinero de una cuenta a otra dentro de una transacción para garantizar que la transferencia sea exitosa y consistente. Aquí está cómo se puede hacer en MySQL:
      ```sql
      START TRANSACTION;
 
@@ -386,22 +378,10 @@ symfony serve
 
 7. **Pregunta de Código:**
    - Crea una vista en MySQL llamada `high_earning_employees` que seleccione todas las columnas de los empleados cuyo salario sea mayor a `70000.00`.
+   
      ```sql
      CREATE VIEW high_earning_employees AS
      SELECT *
      FROM employees
      WHERE salary > 70000.00;
      ```
-
-
-## Instrucciones para el Candidato:
-
-- Responde cada pregunta de manera clara y concisa.
-- Para las preguntas de código, asegúrate de que el código sea funcional, esté bien comentado y siga las buenas prácticas, patrones de diseño y PSR-12 de PHP.
-- Estructura tu respuesta como si se tratara de un proyecto real.
-- Crea un repositorio en GitHub con visibilidad pública y sube todas tus respuestas al repositorio.
-- Incluye un archivo README.md en el repositorio que explique cómo ejecutar el proyecto y cualquier otra información relevante.
-- Puedes utilizar cualquier recurso en línea para ayudarte a responder las preguntas, pero las respuestas deben ser comprensibles y reflejar tu propio conocimiento y habilidades.
-- Envía el enlace al repositorio de GitHub antes de la fecha límite especificada.
-
-¡Buena suerte!
