@@ -21,9 +21,8 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Handle form submission, e.g., save to database
 
-            return $this->redirectToRoute('user'); // Adjust this to your needs
+            return $this->redirectToRoute('user_success');
         }
 
         return $this->render('user/index.html.twig', [
